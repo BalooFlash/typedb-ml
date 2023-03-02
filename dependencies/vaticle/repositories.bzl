@@ -19,15 +19,18 @@
 # under the License.
 #
 
-from setuptools import setup
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-setup(
-    name='typedb_ml',
-    version='',
-    packages=['typedb_ml', 'typedb_ml.networkx', 'typedb_ml.pytorch_geometric', 'typedb_ml.typedb'],
-    url='',
-    license='',
-    author='jmsfltchr',
-    author_email='',
-    description=''
-)
+def vaticle_dependencies():
+    git_repository(
+        name = "vaticle_dependencies",
+        remote = "https://github.com/vaticle/dependencies",
+        commit = "5be6d949ca1e04e4179ea6acb3432be713b9dfb8",  # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_dependencies
+    )
+
+def vaticle_typedb_client_python():
+    git_repository(
+        name = "vaticle_typedb_client_python",
+        remote = "https://github.com/vaticle/typedb-client-python",
+        tag = "2.11.2" # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_typedb_client_python
+    )

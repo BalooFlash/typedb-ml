@@ -19,15 +19,15 @@
 # under the License.
 #
 
-from setuptools import setup
+load("@vaticle_dependencies//distribution/artifact:rules.bzl", "native_artifact_files")
+load("@vaticle_dependencies//distribution:deployment.bzl", "deployment")
 
-setup(
-    name='typedb_ml',
-    version='',
-    packages=['typedb_ml', 'typedb_ml.networkx', 'typedb_ml.pytorch_geometric', 'typedb_ml.typedb'],
-    url='',
-    license='',
-    author='jmsfltchr',
-    author_email='',
-    description=''
-)
+def vaticle_typedb_artifacts():
+    native_artifact_files(
+        name = "vaticle_typedb_artifact",
+        group_name = "vaticle_typedb",
+        artifact_name = "typedb-all-{platform}-{version}.{ext}",
+        tag_source = deployment["artifact.release"],
+        commit_source = deployment["artifact.snapshot"],
+        tag = "2.11.1",
+    )

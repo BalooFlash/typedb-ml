@@ -19,15 +19,7 @@
 # under the License.
 #
 
-from setuptools import setup
+build --incompatible_strict_action_env
+run --incompatible_strict_action_env
+test --incompatible_strict_action_env
 
-setup(
-    name='typedb_ml',
-    version='',
-    packages=['typedb_ml', 'typedb_ml.networkx', 'typedb_ml.pytorch_geometric', 'typedb_ml.typedb'],
-    url='',
-    license='',
-    author='jmsfltchr',
-    author_email='',
-    description=''
-)
